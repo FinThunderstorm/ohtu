@@ -9,11 +9,12 @@ class Statistics:
         self._players = reader.get_players()
 
     def search(self, name):
+        players = []
         for player in self._players:
+            print(player)
             if name in player.name:
-                return player
-
-        return None
+                players.append(player)
+        return players if len(players) > 0 else None
 
     def team(self, team_name):
         players_of_team = filter(
