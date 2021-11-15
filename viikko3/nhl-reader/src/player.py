@@ -8,5 +8,8 @@ class Player:
         self.assists = assists
         self.penalties = penalties
 
+    def __gt__(self, other):
+        return (self.goals+self.assists) > (other.goals + other.assists)
+
     def __str__(self):
-        return f'{self.name} ({self.nationality})\n - Team: {self.team}\n - Games: {self.games}\n - Goals: {self.goals}\n - Assists: {self.assists}\n - Penalties: {self.penalties} minutes\n'
+        return f'{self.name:20} {self.team} {self.goals:2} + {self.assists:2} = {(self.goals+self.assists):2}'
