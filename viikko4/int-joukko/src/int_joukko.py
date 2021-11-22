@@ -13,28 +13,38 @@ class IntJoukko:
         return n in self.ljono
 
     def lisaa(self, n):
-        ei_ole = 0
+        # ei_ole = 0
 
-        if self.alkioiden_lkm == 0:
-            self.ljono[0] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
-            return True
-        else:
-            pass
+        # if self.alkioiden_lkm == 0:
+        #     self.ljono[0] = n
+        #     self.alkioiden_lkm = self.alkioiden_lkm + 1
+        #     return True
+        # else:
+        #     pass
 
-        if not self.kuuluu(n):
-            self.ljono[self.alkioiden_lkm] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
+        # if not self.kuuluu(n):
+        #     self.ljono[self.alkioiden_lkm] = n
+        #     self.alkioiden_lkm = self.alkioiden_lkm + 1
 
-            if self.alkioiden_lkm % len(self.ljono) == 0:
-                taulukko_old = self.ljono
-                self.kopioi_taulukko(self.ljono, taulukko_old)
-                self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
-                self.kopioi_taulukko(taulukko_old, self.ljono)
+        #     if self.alkioiden_lkm % len(self.ljono) == 0:
+        #         taulukko_old = self.ljono
+        #         self.kopioi_taulukko(self.ljono, taulukko_old)
+        #         self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
+        #         self.kopioi_taulukko(taulukko_old, self.ljono)
 
-            return True
+        #     return True
 
-        return False
+        # return False
+        if n in self.ljono:
+            return False
+
+        if self.alkioiden_lkm == self.kapasiteetti:
+            self.kapasiteetti += self.kasvatuskoko
+            self.ljono = self.ljono + ([0] * self.kasvatuskoko)
+
+        self.ljono[self.alkioiden_lkm] = n
+        self.alkioiden_lkm += 1
+        return True
 
     def poista(self, n):
         kohta = -1
