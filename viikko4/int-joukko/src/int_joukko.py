@@ -54,11 +54,8 @@ class IntJoukko:
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            x.lisaa(a_taulu[i])
-
-        for i in range(0, len(b_taulu)):
-            x.lisaa(b_taulu[i])
+        for n in (a_taulu + b_taulu):
+            x.lisaa(n)
 
         return x
 
@@ -80,11 +77,6 @@ class IntJoukko:
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        # for i in range(0, len(a_taulu)):
-        #     z.lisaa(a_taulu[i])
-
-        # for i in range(0, len(b_taulu)):
-        #     z.poista(b_taulu[i])
         for n in a_taulu:
             if n not in b_taulu:
                 z.lisaa(n)
