@@ -85,3 +85,12 @@ class TestOstoskori(unittest.TestCase):
         for ostos in ostokset:
             self.assertIsInstance(ostos, Ostos)
         self.assertEqual(len(ostokset), 2)
+
+    def test_kaksi_samaa_tuotetta_palauttaa_vain_yhden_ostoksen_maaralla_kaksi(self):
+        maito = Tuote("Maito", 3)
+        self.kori.lisaa_tuote(maito)
+        self.kori.lisaa_tuote(maito)
+
+        ostokset = self.kori.ostokset()
+        self.assertEqual(len(ostokset), 1)
+        self.assertEqual(ostokset[0].lukumaara(), 2)

@@ -6,7 +6,7 @@ class Ostoskori:
     def __init__(self):
         self.__hinta = 0
         self.__tavaroita_korissa = 0
-        self.__ostokset = []
+        self.__ostokset = {}
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
     def tavaroita_korissa(self):
@@ -23,7 +23,11 @@ class Ostoskori:
         # lisää tuotteen
         self.__hinta += lisattava.hinta()
         self.__tavaroita_korissa += 1
-        self.__ostokset.append(Ostos(lisattava))
+        if lisattava.nimi() not in self.__ostokset.keys():
+            self.__ostokset[lisattava.nimi()] = Ostos(lisattava)
+            return
+
+        self.__ostokset[lisattava.nimi()].muuta_lukumaaraa(1)
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
@@ -34,6 +38,6 @@ class Ostoskori:
         # tyhjentää ostoskorin
 
     def ostokset(self):
-        return self.__ostokset
+        return list(self.__ostokset.values())
         # palauttaa listan jossa on korissa olevat ostos-oliot
         # kukin ostos-olio siis kertoo mistä tuotteesta on kyse JA kuinka monta kappaletta kyseistä tuotetta korissa on
