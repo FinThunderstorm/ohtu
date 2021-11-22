@@ -28,15 +28,11 @@ class IntJoukko:
         if not self.kuuluu(n):
             return False
 
-        kohta = self.ljono.index(n)
-        print(self.ljono)
-        for i in range(kohta, self.alkioiden_lkm-1):
-            print(self.ljono[i], self.ljono[i+1])
+        for i in range(self.ljono.index(n), self.alkioiden_lkm-1):
             self.ljono[i] = self.ljono[i+1]
-        else:
-            self.ljono[self.alkioiden_lkm-1] = None
+        self.ljono[self.alkioiden_lkm-1] = None
         self.alkioiden_lkm -= 1
-        print(self.ljono)
+
         return True
 
     def kopioi_taulukko(self, a, b):
