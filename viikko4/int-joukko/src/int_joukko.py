@@ -68,10 +68,9 @@ class IntJoukko:
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            for j in range(0, len(b_taulu)):
-                if a_taulu[i] == b_taulu[j]:
-                    y.lisaa(b_taulu[j])
+        for n in max(a_taulu, b_taulu):
+            if n in min(a_taulu, b_taulu):
+                y.lisaa(n)
 
         return y
 
@@ -79,17 +78,13 @@ class IntJoukko:
     def erotus(a, b):
         z = IntJoukko()
         a_taulu = a.to_int_list()
-        # print(a_taulu)
         b_taulu = b.to_int_list()
-        # print(b_taulu)
 
         for i in range(0, len(a_taulu)):
             z.lisaa(a_taulu[i])
-            print(z.ljono, '+', a_taulu[i])
 
         for i in range(0, len(b_taulu)):
             z.poista(b_taulu[i])
-            print(z.ljono, '-', b_taulu[i])
 
         return z
 
