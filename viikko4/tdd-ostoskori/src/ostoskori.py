@@ -39,7 +39,10 @@ class Ostoskori:
             del self.__ostokset[poistettava.nimi()]
 
     def tyhjenna(self):
-        pass
+        for ostos in list(self.__ostokset.keys()):
+            self.__tavaroita_korissa -= 1
+            self.__hinta -= self.__ostokset[ostos].hinta()
+            del self.__ostokset[ostos]
         # tyhjentää ostoskorin
 
     def ostokset(self):
