@@ -6,7 +6,7 @@ class IntJoukko:
     def __init__(self, kapasiteetti=KAPASITEETTI, kasvatuskoko=OLETUSKASVATUS):
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
-        self.ljono = [0] * self.kapasiteetti
+        self.ljono = [None] * self.kapasiteetti
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
@@ -29,12 +29,14 @@ class IntJoukko:
             return False
 
         kohta = self.ljono.index(n)
-        self.ljono[kohta] = 0
-
+        print(self.ljono)
         for i in range(kohta, self.alkioiden_lkm-1):
+            print(self.ljono[i], self.ljono[i+1])
             self.ljono[i] = self.ljono[i+1]
+        else:
+            self.ljono[self.alkioiden_lkm-1] = None
         self.alkioiden_lkm -= 1
-
+        print(self.ljono)
         return True
 
     def kopioi_taulukko(self, a, b):
@@ -49,7 +51,10 @@ class IntJoukko:
         for i in range(0, len(taulu)):
             taulu[i] = self.ljono[i]
 
-        return taulu
+        print(taulu)
+        print(list(filter(lambda x: x != None, self.ljono)))
+
+        return taulu  # list(filter(lambda x: x != None, self.ljono))
 
     @staticmethod
     def yhdiste(a, b):
@@ -82,13 +87,17 @@ class IntJoukko:
     def erotus(a, b):
         z = IntJoukko()
         a_taulu = a.to_int_list()
+        # print(a_taulu)
         b_taulu = b.to_int_list()
+        # print(b_taulu)
 
         for i in range(0, len(a_taulu)):
             z.lisaa(a_taulu[i])
+            print(z.ljono, '+', a_taulu[i])
 
         for i in range(0, len(b_taulu)):
             z.poista(b_taulu[i])
+            print(z.ljono, '-', b_taulu[i])
 
         return z
 
