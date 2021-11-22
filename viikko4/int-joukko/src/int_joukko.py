@@ -13,28 +13,6 @@ class IntJoukko:
         return n in self.ljono
 
     def lisaa(self, n):
-        # ei_ole = 0
-
-        # if self.alkioiden_lkm == 0:
-        #     self.ljono[0] = n
-        #     self.alkioiden_lkm = self.alkioiden_lkm + 1
-        #     return True
-        # else:
-        #     pass
-
-        # if not self.kuuluu(n):
-        #     self.ljono[self.alkioiden_lkm] = n
-        #     self.alkioiden_lkm = self.alkioiden_lkm + 1
-
-        #     if self.alkioiden_lkm % len(self.ljono) == 0:
-        #         taulukko_old = self.ljono
-        #         self.kopioi_taulukko(self.ljono, taulukko_old)
-        #         self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
-        #         self.kopioi_taulukko(taulukko_old, self.ljono)
-
-        #     return True
-
-        # return False
         if n in self.ljono:
             return False
 
@@ -47,25 +25,36 @@ class IntJoukko:
         return True
 
     def poista(self, n):
-        kohta = -1
-        apu = 0
+        # kohta = -1
+        # apu = 0
 
-        for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
-                kohta = i  # siis luku löytyy tuosta kohdasta :D
-                self.ljono[kohta] = 0
-                break
+        # for i in range(0, self.alkioiden_lkm):
+        #     if n == self.ljono[i]:
+        #         kohta = i  # siis luku löytyy tuosta kohdasta :D
+        #         self.ljono[kohta] = 0
+        #         break
 
-        if kohta != -1:
-            for j in range(kohta, self.alkioiden_lkm - 1):
-                apu = self.ljono[j]
-                self.ljono[j] = self.ljono[j + 1]
-                self.ljono[j + 1] = apu
+        # if kohta != -1:
+        #     for j in range(kohta, self.alkioiden_lkm - 1):
+        #         apu = self.ljono[j]
+        #         self.ljono[j] = self.ljono[j + 1]
+        #         self.ljono[j + 1] = apu
 
-            self.alkioiden_lkm = self.alkioiden_lkm - 1
-            return True
+        #     self.alkioiden_lkm = self.alkioiden_lkm - 1
+        #     return True
 
-        return False
+        # return False
+        if not self.kuuluu(n):
+            return False
+
+        kohta = self.ljono.index(n)
+        self.ljono[kohta] = 0
+
+        for i in range(kohta, self.alkioiden_lkm-1):
+            self.ljono[i] = self.ljono[i+1]
+        self.alkioiden_lkm -= 1
+
+        return True
 
     def kopioi_taulukko(self, a, b):
         for i in range(0, len(a)):
