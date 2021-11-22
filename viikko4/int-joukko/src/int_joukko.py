@@ -6,21 +6,21 @@ class IntJoukko:
     def __init__(self, kapasiteetti=KAPASITEETTI, kasvatuskoko=OLETUSKASVATUS):
         self.kapasiteetti = kapasiteetti
         self.kasvatuskoko = kasvatuskoko
-        self.ljono = [None] * self.kapasiteetti
+        self.lukujono = [None] * self.kapasiteetti
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
-        return n in self.ljono
+        return n in self.lukujono
 
     def lisaa(self, n):
-        if n in self.ljono:
+        if n in self.lukujono:
             return False
 
         if self.alkioiden_lkm == self.kapasiteetti:
             self.kapasiteetti += self.kasvatuskoko
-            self.ljono = self.ljono + ([0] * self.kasvatuskoko)
+            self.lukujono = self.lukujono + ([0] * self.kasvatuskoko)
 
-        self.ljono[self.alkioiden_lkm] = n
+        self.lukujono[self.alkioiden_lkm] = n
         self.alkioiden_lkm += 1
         return True
 
@@ -28,9 +28,10 @@ class IntJoukko:
         if not self.kuuluu(n):
             return False
 
-        for i in range(self.ljono.index(n), self.alkioiden_lkm-1):
-            self.ljono[i] = self.ljono[i+1]
-        self.ljono[self.alkioiden_lkm-1] = None
+        for i in range(self.lukujono.index(n), self.alkioiden_lkm-1):
+            self.lukujono[i] = self.lukujono[i+1]
+
+        self.lukujono[self.alkioiden_lkm-1] = None
         self.alkioiden_lkm -= 1
 
         return True
@@ -42,7 +43,7 @@ class IntJoukko:
         return self.alkioiden_lkm
 
     def to_int_list(self):
-        return list(filter(lambda x: x != None, self.ljono))
+        return list(filter(lambda x: x != None, self.lukujono))
 
     @staticmethod
     def yhdiste(a, b):
