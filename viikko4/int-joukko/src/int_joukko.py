@@ -80,25 +80,16 @@ class IntJoukko:
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            z.lisaa(a_taulu[i])
+        # for i in range(0, len(a_taulu)):
+        #     z.lisaa(a_taulu[i])
 
-        for i in range(0, len(b_taulu)):
-            z.poista(b_taulu[i])
+        # for i in range(0, len(b_taulu)):
+        #     z.poista(b_taulu[i])
+        for n in a_taulu:
+            if n not in b_taulu:
+                z.lisaa(n)
 
         return z
 
     def __str__(self):
-        # if self.alkioiden_lkm == 0:
-        #     return "{}"
-        # elif self.alkioiden_lkm == 1:
-        #     return "{" + str(self.ljono[0]) + "}"
-        # else:
-        #     tuotos = "{"
-        #     for i in range(0, self.alkioiden_lkm - 1):
-        #         tuotos = tuotos + str(self.ljono[i])
-        #         tuotos = tuotos + ", "
-        #     tuotos = tuotos + str(self.ljono[self.alkioiden_lkm - 1])
-        #     tuotos = tuotos + "}"
-        #     return tuotos
         return f'\u007b{", ".join(map(lambda x: str(x), self.to_int_list()))}\u007d'
