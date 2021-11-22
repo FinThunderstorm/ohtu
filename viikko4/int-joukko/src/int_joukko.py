@@ -25,25 +25,6 @@ class IntJoukko:
         return True
 
     def poista(self, n):
-        # kohta = -1
-        # apu = 0
-
-        # for i in range(0, self.alkioiden_lkm):
-        #     if n == self.ljono[i]:
-        #         kohta = i  # siis luku löytyy tuosta kohdasta :D
-        #         self.ljono[kohta] = 0
-        #         break
-
-        # if kohta != -1:
-        #     for j in range(kohta, self.alkioiden_lkm - 1):
-        #         apu = self.ljono[j]
-        #         self.ljono[j] = self.ljono[j + 1]
-        #         self.ljono[j + 1] = apu
-
-        #     self.alkioiden_lkm = self.alkioiden_lkm - 1
-        #     return True
-
-        # return False
         if not self.kuuluu(n):
             return False
 
@@ -57,8 +38,7 @@ class IntJoukko:
         return True
 
     def kopioi_taulukko(self, a, b):
-        for i in range(0, len(a)):
-            b[i] = a[i]
+        b = a[:]
 
     def mahtavuus(self):
         return self.alkioiden_lkm
