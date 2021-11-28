@@ -2,40 +2,16 @@
 
 function getScore(P1point, P2point) {
     let score = ""
-    let playerOneResult
-    let playerTwoResult
 
-    switch(P1point) {
-        case 0:
-            playerOneResult = "Love"
-            break
-        case 1:
-            playerOneResult = "Fifteen"
-            break
-        case 2:
-            playerOneResult = "Thirty"
-            break
-        case 3:
-            playerOneResult = "Forty"
-            break
-        default:
+    const results = {
+        0: "Love",
+        1: "Fifteen",
+        2: "Thirty",
+        3: "Forty"
     }
 
-    switch(P2point) {
-        case 0:
-            playerTwoResult = "Love"
-            break
-        case 1:
-            playerTwoResult = "Fifteen"
-            break
-        case 2:
-            playerTwoResult = "Thirty"
-            break
-        case 3:
-            playerTwoResult = "Forty"
-            break
-        default:
-    }
+    let playerOneResult = results[P1point]
+    let playerTwoResult = results[P2point]
 
     score = playerOneResult + "-" + playerTwoResult;
 
