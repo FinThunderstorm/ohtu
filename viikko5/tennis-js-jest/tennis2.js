@@ -4,14 +4,15 @@ function getScore(P1point, P2point) {
     var score = "";
 
     if (P1point === P2point && P1point < 3) {
-        if (P1point === 0) {
-            score = "Love";
-        }
-        if (P1point === 1) {
-            score = "Fifteen";
-        }
-        if (P1point === 2) {
-            score = "Thirty";
+
+        switch (P1point) {
+            case 0:
+                score = "Love"
+            case 1:
+                score = "Fifteen"
+            case 2:
+                score = "Thirty"
+            default:
         }
         score += "-All";
     }
