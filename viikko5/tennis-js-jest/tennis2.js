@@ -37,30 +37,16 @@ function getScore(P1point, P2point) {
         default:
     }
 
+    score = playerOneResult + "-" + playerTwoResult;
+
     if (P1point === P2point && P1point < 3) {
-        score += playerOneResult
+        score = playerOneResult
         score += "-All";
     }
     if (P1point === P2point && P1point > 2) {
         score = "Deuce";
     }
-
-    var P1res;
-    var P2res;
-    if (P1point > 0 && P2point === 0) {
-        score = playerOneResult + "-" + playerTwoResult;
-    }
-    if (P2point > 0 && P1point === 0) {
-        score = playerOneResult + "-" + playerTwoResult;
-    }
-
-    if (P1point > P2point && P1point < 4) {
-        score = playerOneResult + "-" + playerTwoResult;
-    }
-    if (P2point > P1point && P2point < 4) {
-        score = playerOneResult + "-" + playerTwoResult;
-    }
-
+    
     if (P1point > P2point && P2point >= 3) {
         score = "Advantage player1";
     }
