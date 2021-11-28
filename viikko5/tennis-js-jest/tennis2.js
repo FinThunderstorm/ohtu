@@ -4,14 +4,16 @@ function getScore(P1point, P2point) {
     var score = "";
 
     if (P1point === P2point && P1point < 3) {
-
-        switch (P1point) {
+        switch(P1point) {
             case 0:
                 score = "Love"
+                break
             case 1:
                 score = "Fifteen"
+                break
             case 2:
                 score = "Thirty"
+                break
             default:
         }
         score += "-All";
@@ -23,28 +25,34 @@ function getScore(P1point, P2point) {
     var P1res;
     var P2res;
     if (P1point > 0 && P2point === 0) {
-        if (P1point === 1) {
-            P1res = "Fifteen";
-        }
-        if (P1point === 2) {
-            P1res = "Thirty";
-        }
-        if (P1point === 3) {
-            P1res = "Forty";
+        switch(P1point) {
+            case 1:
+                P1res = "Fifteen"
+                break
+            case 2:
+                P1res = "Thirty"
+                break
+            case 3:
+                P1res = "Forty"
+                break
+            default:
         }
 
         P2res = "Love";
         score = P1res + "-" + P2res;
     }
     if (P2point > 0 && P1point === 0) {
-        if (P2point === 1) {
-            P2res = "Fifteen";
-        }
-        if (P2point === 2) {
-            P2res = "Thirty";
-        }
-        if (P2point === 3) {
-            P2res = "Forty";
+        switch(P2point) {
+            case 1:
+                P2res = "Fifteen"
+                break
+            case 2:
+                P2res = "Thirty"
+                break
+            case 3:
+                P2res = "Forty"
+                break
+            default:
         }
 
         P1res = "Love";
@@ -52,32 +60,44 @@ function getScore(P1point, P2point) {
     }
 
     if (P1point > P2point && P1point < 4) {
-        if (P1point === 2) {
-            P1res = "Thirty";
+        switch(P1point) {
+            case 2:
+                P1res = "Thirty"
+                break
+            case 3:
+                P1res = "Forty"
+                break
+            default:
         }
-        if (P1point === 3) {
-            P1res = "Forty";
-        }
-        if (P2point === 1) {
-            P2res = "Fifteen";
-        }
-        if (P2point === 2) {
-            P2res = "Thirty";
+        switch(P2point) {
+            case 1:
+                P2res = "Fifteen"
+                break
+            case 2:
+                P2res = "Thirty"
+                break
+            default:
         }
         score = P1res + "-" + P2res;
     }
     if (P2point > P1point && P2point < 4) {
-        if (P2point === 2) {
-            P2res = "Thirty";
+        switch(P2point) {
+            case 2:
+                P2res = "Thirty"
+                break
+            case 3:
+                P2res = "Forty"
+                break
+            default:
         }
-        if (P2point === 3) {
-            P2res = "Forty";
-        }
-        if (P1point === 1) {
-            P1res = "Fifteen";
-        }
-        if (P1point === 2) {
-            P1res = "Thirty";
+        switch(P1point) {
+            case 1:
+                P1res = "Fifteen"
+                break
+            case 2:
+                P1res = "Thirty"
+                break
+            default:
         }
         score = P1res + "-" + P2res;
     }
