@@ -39,18 +39,22 @@ function getScore(P1point, P2point) {
 
     score = playerOneResult + "-" + playerTwoResult;
 
-    if (P1point === P2point && P1point < 3) {
-        score = playerOneResult
-        score += "-All";
+    if (P1point === P2point){
+        switch(P1point < 3){
+            case true:
+                score = playerOneResult + "-All"
+                break
+            case false:
+                score = "Deuce"
+                break
+            default:
+        }
     }
-    if (P1point === P2point && P1point > 2) {
-        score = "Deuce";
-    }
+    
     
     if (P1point > P2point && P2point >= 3) {
         score = "Advantage player1";
     }
-
     if (P2point > P1point && P1point >= 3) {
         score = "Advantage player2";
     }
