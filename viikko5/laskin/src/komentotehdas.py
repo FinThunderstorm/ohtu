@@ -100,7 +100,6 @@ class Kumoa:
 
     def suorita(self):
         kumottava = self._edellinen.pop()
-        print('kumotaan', kumottava)
         self._kumottavat[kumottava].kumoa()
         if len(self._edellinen) == 0:
             self._io["aseta_kumoaminen"](False)
