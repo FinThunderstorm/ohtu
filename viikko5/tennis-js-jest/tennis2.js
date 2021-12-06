@@ -10,23 +10,18 @@ function getScore(P1point, P2point) {
         3: "Forty"
     }
 
-    let playerOneResult = results[P1point]
-    let playerTwoResult = results[P2point]
-
-    score = playerOneResult + "-" + playerTwoResult;
+    //score = P1point === P2point && P1point < 3 ? results[P1point] + "-All" : "Deuce"
 
     if (P1point === P2point){
         switch(P1point < 3){
             case true:
-                score = playerOneResult + "-All"
-                break
+                return results[P1point] + "-All"
             case false:
-                score = "Deuce"
-                break
+                return "Deuce"
             default:
         }
     }
-    
+    score = results[P1point] + "-" + results[P2point];
     
     if (P1point > P2point && P2point >= 3) {
         score = "Advantage player1";
