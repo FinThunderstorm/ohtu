@@ -8,7 +8,8 @@ class Kayttoliittyma:
         self._sovellus = sovellus
         self._root = root
         self._komentotehdas = Komentotehdas(
-            self._sovellus, {"hae_arvo": self._hae_arvo, "aseta_arvo": self._aseta_arvo})
+            self._sovellus, {"hae_arvo": self._hae_arvo, "aseta_arvo": self._aseta_arvo, "aseta_kumoaminen": self._aseta_kumoaminen})
+        self._kumottavaa = False
 
     def kaynnista(self):
         self._tulos_var = StringVar()
@@ -62,14 +63,13 @@ class Kayttoliittyma:
         return arvo
 
     def _aseta_arvo(self, arvo):
-        if arvo == 0:
-            self._nollaus_painike["state"] = constants.DISABLED
-        else:
-            self._nollaus_painike["state"] = constants.NORMAL
+        self._nollaus_painike["state"] = constants.DISABLED if arvo == 0 else constants.NORMAL
         self._syote_kentta.delete(0, constants.END)
         self._tulos_var.set(arvo)
 
+    def _aseta_kumoaminen(self, voiko):
+        self._kumottavaa = voiko
+
     def _suorita_komento(self, komento):
         self._komentotehdas.hae(komento).suorita()
-
-        self._kumoa_painike["state"] = constants.NORMAL
+        self._kumoa_painike["state"] = constants.NORMAL if self._kumottavaa else constants.DISABLED
