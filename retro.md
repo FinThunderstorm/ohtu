@@ -1,3 +1,5 @@
+Tehtävä tehty ajoissa kyllä, mutta joku ei muistanut enää git commit & git push oikeaan aikaan...
+
 # Retrospektiivitekniikat
 
 Retrospektiivissä ajatuksena on projektitiimin kesken keskustella projektin kulusta tietyn aikaikkunan sisällä (Wikipedia, 2020). Näitä aikaikkunoita voi olla esimerkiksi koko projekti tai jokin osa siitä, kuten scrumissa sprintin päätteeksi. Keskustelussa käydään läpi sitä, että miten projekti on mennyt ja mitä voitaisiin kehittää. Näiden pohjalta viedään omaa prosessia eteenpäin saadakseen entistä enemmän tehoa tiimistä irti.
