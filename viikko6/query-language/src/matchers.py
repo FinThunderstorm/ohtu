@@ -24,11 +24,8 @@ class Or:
 
 
 class All:
-    def __init__(self, command):
-        self._command = command
-
     def matches(self, player):
-        return self._command.matches(player)
+        return True
 
 
 class Not:
